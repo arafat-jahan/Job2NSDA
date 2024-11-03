@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "194290327612",
+    "project_id": "job3nsda",
+    "storage_bucket": "job3nsda.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194290327612:android:f2170465a6617fa216e339",
+        "android_client_info": {
+          "package_name": "com.example.job3nsda"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1SsoLuUYz_-Emip6Q3ha9iMhDMlPckOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

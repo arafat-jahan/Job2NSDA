@@ -1,0 +1,59 @@
+package com.example.job3nsda
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
+import com.google.firebase.auth.FirebaseAuth
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewEventsButton: Button
+    private lateinit var createEventButton: Button
+    private lateinit var profileButton: Button
+    private lateinit var mapsButton: Button
+    private lateinit var auth: FirebaseAuth // Firebase Authentication instance
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
+
+        // Check if the user is signed in
+        if (auth.currentUser == null) {
+            // User is not signed in, navigate to Login/Register Activity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish() // Close MainActivity
+            return // Prevent further execution
+        }
+
+        setContentView(R.layout.activity_main)
+
+        viewEventsButton = findViewById(R.id.viewEventsButton)
+        createEventButton = findViewById(R.id.createEventButton)
+        profileButton = findViewById(R.id.profileButton)
+        mapsButton = findViewById(R.id.mapsButton)
+
+        // Set up button click listeners
+        viewEventsButton.setOnClickListener {
+            val intent = Intent(this, EventDetailsActivity::class.java)
+            startActivity(intent)
+        }
+
+        createEventButton.setOnClickListener {
+            val intent = Intent(this, CreateEventActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        mapsButton.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
+        }
+    }
+}
