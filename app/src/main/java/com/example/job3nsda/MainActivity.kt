@@ -2,6 +2,7 @@ package com.example.job3nsda
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var createEventButton: Button
     private lateinit var profileButton: Button
     private lateinit var mapsButton: Button
-    private lateinit var auth: FirebaseAuth // Firebase Authentication instance
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,9 +21,12 @@ class MainActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
+        // Log current user
+        Log.d("MainActivity", "Current User: ${auth.currentUser}")
+
         // Check if the user is signed in
         if (auth.currentUser == null) {
-            // User is not signed in, navigate to Login/Register Activity
+            // User is not signed in, navigate to Login Activity
             startActivity(Intent(this, LoginActivity::class.java))
             finish() // Close MainActivity
             return // Prevent further execution
@@ -30,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        // Initialize buttons
         viewEventsButton = findViewById(R.id.viewEventsButton)
         createEventButton = findViewById(R.id.createEventButton)
         profileButton = findViewById(R.id.profileButton)

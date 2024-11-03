@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, navigate to main activity
+                    // Sign in success, navigate to MainActivity
                     val intent = Intent(this, MainActivity::class.java) // Change to your main activity
                     startActivity(intent)
                     finish() // Close LoginActivity
